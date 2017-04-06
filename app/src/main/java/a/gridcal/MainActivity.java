@@ -55,9 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.but_division:
                     result = first_num / second_num;
                     break;
-
             }
-            textResult.setText(result + "");
+            textResult.setText("계산결과 : "+result + "");
         }
     };
 }
