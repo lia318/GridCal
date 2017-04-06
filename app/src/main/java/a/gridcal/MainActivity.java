@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     EditText edit_1, edit_2;
+    Button[] butNums=new Button[10];
+    Button[] butOps=new Button[4]
+    // int[] ids = {R.id.but_0..... but_9까지 값을 초기화 해준다. => 미개한 방법} => for문 ids[i]
     Button but_plus, but_minus, but_multiply, but_division;
     TextView textResult;
     String num1, num2;
@@ -18,6 +21,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        for(int i=0; i<butNums.length; i++){
+            butNums[i]=(Button)findViewById(R.id.but_0 + i);
+            butNums[i].setOnClickListener();
+        }
+        for(int i=0; i<butOps.length; i++){
+            butOps[i]=(Button)findViewById(R.id.but_0 + i);
+            butOps[i].setOnClickListener();
+        }
+
         edit_1 = (EditText) findViewById(R.id.edit_1);
         edit_2 = (EditText) findViewById(R.id.edit_2);
 
@@ -34,6 +47,22 @@ public class MainActivity extends AppCompatActivity {
         but_multiply.setOnClickListener(butHandler);
         but_division.setOnClickListener(butHandler);
     }
+
+    View.OnClickListener butNumHandler=new View.OnClickListener(){
+
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
+
+    View.OnClickListener butOpsHandler=new View.OnClickListener(){
+
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
 
     View.OnClickListener butHandler = new View.OnClickListener() {
         @Override
