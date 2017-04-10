@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         edit_2 = (EditText) findViewById(R.id.edit_2);
         edit_1.setOnTouchListener(edithandler);
         edit_2.setOnTouchListener(edithandler);
+        textResult=(TextView)findViewById(R.id.text_result);
 
         for (int i = 0; i < butNums.length; i++) {
             butNums[i] = (Button) findViewById(R.id.but_0 + i);
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             int first_num = Integer.parseInt(edit_1.getText().toString());
             int second_num = Integer.parseInt(edit_2.getText().toString());
-            int result = 0;
+            double result = 0;
 
             switch (v.getId()) {
                 case R.id.but_plus:
@@ -78,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
                     result = first_num * second_num;
                     break;
                 case R.id.but_division:
-                    result = first_num / second_num;
+                    result = (double)first_num / second_num;
                     break;
 
-            }
-            textResult.setText(result + "");
+            } // end of switch
+            textResult.setText("계산 결과 : "+result);
         }
     };
 
