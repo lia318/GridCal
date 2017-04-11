@@ -19,27 +19,27 @@ public class MainActivity extends AppCompatActivity {
     String numStr = "";
     // int[] ids = {R.id.but_0..... but_9까지 값을 초기화 해준다. => 미개한 방법} => for문 ids[i]
     Button but_plus, but_minus, but_multiply, but_division;
-    TextView textResult;
+    TextView text_result;
     String num1, num2;
     Integer result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // 순서중요
         edit_1 = (EditText) findViewById(R.id.edit_1);
         edit_2 = (EditText) findViewById(R.id.edit_2);
         edit_1.setOnTouchListener(edithandler);
         edit_2.setOnTouchListener(edithandler);
-        textResult=(TextView)findViewById(R.id.text_result);
+        text_result=(TextView)findViewById(R.id.text_result);
 
         for (int i = 0; i < butNums.length; i++) {
             butNums[i] = (Button) findViewById(R.id.but_0 + i);
-            butNums[i].setOnClickListener(butNumHandler);
+            butNums[i].setOnClickListener(butOpsHandler);
         }
         for (int i = 0; i < butOps.length; i++) {
             butOps[i] = (Button) findViewById(R.id.but_0 + i);
-            butOps[i].setOnClickListener(butNumHandler);
+            butOps[i].setOnClickListener(butOpsHandler);
         }
     }
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
             } // end of switch
-            textResult.setText("계산 결과 : "+result);
+            text_result.setText("계산 결과 : "+result);
         }
     };
 
@@ -95,8 +95,10 @@ public class MainActivity extends AppCompatActivity {
             switch(v.getId()){
                 case R.id.edit_1:
                     SelectEdit = SELECT_EDIT1;
+                    edit_1.setText(numStr);
                     break;
                 case R.id.edit_2:
+                    edit_2.setText(numStr);
                     SelectEdit = SELECT_EDIT2;
                     break;
             }
